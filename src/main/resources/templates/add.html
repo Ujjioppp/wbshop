@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorator="layout/header">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+    <script>
+        function Num(obj) {
+            obj.value = obj.value.replace(/[^\d.]/g, ""); //清除"数字"和"."以外的字符
+            obj.value = obj.value.replace(/^\./g, ""); //验证第一个字符是数字而不是
+            obj.value = obj.value.replace(/\.{2,}/g, "."); //只保留第一个. 清除多余的
+            obj.value = obj.value.replace(".", "$#$").replace(/\./g, "").replace("$#$", ".");
+            obj.value = obj.value.replace(/^(\-)*(\d+)\.(\d\d).*$/, '$1$2.$3'); //只能输入两个小数
+        }
+    </script>
+</head>
+<body>
+<div class="content" layout:fragment="content">
+    <div class="wrap">
+        <div class="contact-info">
+            <form method="post" action="" th:action="@{/commodity/add}">
+                <div class="contact-form">
+                    <div class="contact-to">
+                        <input type="text" name="name" class="text" placeholder="名字" value="" />
+                        <input type="text" name="title" class="text" placeholder="标题" />
+                        <input type="text" name="price" class="text" onkeyup="Num(this)" placeholder="价钱"/>
+                        <input type="text" name="1" class="text" onkeyup="Num(this)" placeholder="价钱"/>
+                    </div>
+                    <div class="text2">
+                        <textarea value="简介" name="description" style="resize: none;" placeholder="简介"></textarea>
+                    </div>
+                    <span><input type="submit" class="" value="上"/></span>
+                    <div class="clear"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>

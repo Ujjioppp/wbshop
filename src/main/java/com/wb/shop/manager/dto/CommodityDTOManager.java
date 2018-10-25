@@ -34,6 +34,27 @@ public class CommodityDTOManager {
         return commodityDTO;
     }
 
+    public Commodity convertToCommodityDO(CommodityDTO commodityDTO) {
+        if (commodityDTO == null) {
+            return null;
+        }
+        Commodity commodity = new Commodity();
+        commodity.setId(commodityDTO.getId());
+        commodity.setCreateTime(commodityDTO.getCreateTime());
+        commodity.setCreator(commodityDTO.getCreator());
+        commodity.setDeleted(commodityDTO.getDeleted());
+        commodity.setDescription(commodityDTO.getDescription());
+        commodity.setImg(commodityDTO.getImg());
+        commodity.setName(commodityDTO.getName());
+        commodity.setPrice(commodityDTO.getPrice());
+        commodity.setTitle(commodityDTO.getTitle());
+        commodity.setUpdater(commodityDTO.getUpdater());
+        commodity.setUpdateTime(commodityDTO.getUpdateTime());
+        commodity.setUuid(commodityDTO.getUuid());
+
+        return commodity;
+    }
+
     public List<CommodityDTO> convertToCommodityDTOList(List<Commodity> commodityList) {
         if (CollectionUtils.isEmpty(commodityList)) {
             return null;

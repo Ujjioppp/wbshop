@@ -1,12 +1,14 @@
 package com.wb.shop.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.wb.shop.bean.UUIDGenerator;
 import com.wb.shop.dao.CommodityMapper;
 import com.wb.shop.domain.Commodity;
 import com.wb.shop.manager.dto.CommodityDTOManager;
 import com.wb.shop.model.dto.CommodityDTO;
 import com.wb.shop.page.PageInfo;
 import com.wb.shop.service.CommodityService;
+import com.wb.shop.util.DateUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class CommodityServiceImpl implements CommodityService {
     private CommodityMapper commodityMapper;
     @Autowired
     private CommodityDTOManager commodityDTOManager;
+    @Autowired
+    private UUIDGenerator uuidGenerator;
 
     public List<CommodityDTO> findCommodityList(PageInfo pageInfo) {
         if (pageInfo != null) {
@@ -42,5 +46,16 @@ public class CommodityServiceImpl implements CommodityService {
         Commodity commodity = commodityMapper.getByUuid(uuid);
         CommodityDTO commodityDTO = commodityDTOManager.convertToCommodityDTO(commodity);
         return commodityDTO;
+    }
+
+    @Override
+    public void saveCommodity(CommodityDTO commodityDTO) {
+        Commodity commodity = commodityDTOManager.convertToCommodityDO(commodityDTO);
+        if (commodity != null) {
+            commodity.setUuid(uuidGenerator.uuid());
+            commodity.setCreateTime(DateUtil.now());
+            commodity.setUpdateTime(DateUtil.now());
+            commodityMapper.insert(commodity);
+        }
     }
 }

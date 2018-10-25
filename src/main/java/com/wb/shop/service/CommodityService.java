@@ -12,4 +12,6 @@ public interface CommodityService {
     List<CommodityDTO> findCommodityList(PageInfo pageInfo);
 
     CommodityDTO getCommodityByUuid(String uuid);
+
+    void saveCommodity(CommodityDTO commodityDTO);
 }

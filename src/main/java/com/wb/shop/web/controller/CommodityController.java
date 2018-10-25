@@ -10,10 +10,7 @@ import com.wb.shop.service.CommodityService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +42,17 @@ public class CommodityController {
         List<CommodityVO> commodityVOList = commodityVOManager.convertToCommodityVOList(commodityDTOList);
         resultVO.setDatas(commodityVOList);
         return resultVO;
+    }
+
+    @GetMapping(value = UrlView.Commodity.PRODUCT_ADD_URL)
+    public String add() {
+        return UrlView.Commodity.PRODUCT_ADD_VIEW;
+    }
+
+    @PostMapping(value = UrlView.Commodity.PRODUCT_ADD_URL)
+    public String save(CommodityVO commodityVO) {
+        CommodityDTO commodityDTO = commodityVOManager.convertToCommodityDTO(commodityVO);
+        commodityService.saveCommodity(commodityDTO);
+        return "redirect:/" + UrlView.Index.INDEX_URL;
     }
 }

@@ -3,7 +3,9 @@ package com.wb.shop.manager.vo;
 import com.wb.shop.constant.Interaction;
 import com.wb.shop.model.dto.CommodityDTO;
 import com.wb.shop.model.vo.CommodityVO;
+import com.wb.shop.util.DateUtil;
 import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.springframework.stereotype.Component;
 
@@ -57,6 +59,48 @@ public class CommodityVOManager {
         }
         commodityVO.setUuid(commodityDTO.getUuid());
         return commodityVO;
+    }
+
+    public CommodityDTO convertToCommodityDTO(CommodityVO commodityVO) {
+        if (commodityVO == null) {
+            return null;
+        }
+        CommodityDTO commodityDTO = new CommodityDTO();
+        String id = commodityVO.getId();
+        if (StringUtils.isNotBlank(id)) {
+            commodityDTO.setId(Long.valueOf(id));
+        }
+        String createTime = commodityVO.getCreateTime();
+        if (StringUtils.isNotBlank(createTime)) {
+            commodityDTO.setCreateTime(DateUtil.parseDateTime(createTime));
+        }
+        String creator = commodityVO.getCreator();
+        if (StringUtils.isNotBlank(creator)) {
+            commodityDTO.setCreator(Long.valueOf(creator));
+        }
+        String deleted = commodityVO.getDeleted();
+        if (StringUtils.isNotBlank(deleted)) {
+            commodityDTO.setDeleted(Integer.valueOf(deleted));
+        }
+        commodityDTO.setDescription(commodityVO.getDescription());
+        commodityDTO.setImg(commodityVO.getImg());
+        commodityDTO.setName(commodityVO.getName());
+        String price = commodityVO.getPrice();
+        if (StringUtils.isNotBlank(price)) {
+            commodityDTO.setPrice(new BigDecimal(price));
+        }
+        commodityDTO.setTitle(commodityVO.getTitle());
+
+        String updateTime = commodityVO.getUpdateTime();
+        if (StringUtils.isNotBlank(updateTime)) {
+            commodityDTO.setUpdateTime(DateUtil.parseDateTime(updateTime));
+        }
+        String updater = commodityVO.getUpdater();
+        if (StringUtils.isNotBlank(updater)) {
+            commodityDTO.setUpdater(Long.valueOf(updater));
+        }
+        commodityDTO.setUuid(commodityVO.getUuid());
+        return commodityDTO;
     }
 
     public List<CommodityVO> convertToCommodityVOList(List<CommodityDTO> commodityDTOList) {

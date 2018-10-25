@@ -241,7 +241,7 @@
         where id = #{id,jdbcType=BIGINT}
     </update>
     <select id="findCommodityList" resultMap="BaseResultMap">
-    select * from commodity
+    select * from commodity order by create_time desc
   </select>
     <select id="getByUuid" parameterType="java.lang.String" resultMap="BaseResultMap">
     select * from commodity where uuid = #{uuid,jdbcType=VARCHAR}

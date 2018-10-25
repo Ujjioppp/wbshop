@@ -21,5 +21,12 @@ public class UrlView {
         public static final String PRODUCT_VIEW = "product";
 
         public static final String PRODUCT_LITS_URL = "list";
+
+
+
+        public static final String PRODUCT_ADD_URL = "add";
+        public static final String PRODUCT_ADD_VIEW = "add";
+
+
     }
 }
