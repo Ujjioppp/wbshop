@@ -54,7 +54,7 @@
         <!--<table tableName="order_biz_type" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">-->
 
         <!--</table>-->
-        <table tableName="commodity" domainObjectName="Commodity" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
+        <table tableName="user" domainObjectName="User" enableCountByExample="false" enableDeleteByExample="false" enableUpdateByExample="false" enableSelectByExample="false">
             <generatedKey column="id" identity="true" sqlStatement="MySql" />
         </table>
     </context>
