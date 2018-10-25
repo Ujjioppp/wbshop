@@ -31,4 +31,6 @@ spring:
   http:
     converters:
       preferred-json-mapper: fastjson
+logging:
+  level: debug
 

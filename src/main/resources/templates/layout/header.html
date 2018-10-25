@@ -8,8 +8,25 @@
     <link th:href="@{/css/main.css}" rel="stylesheet" href=""/>
     <link rel="shortcut icon" type="image/x-icon" href="images/fav-icon.png" />
     <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script th:src="@{/layer/layer.js}"></script>
 </head>
 <body>
+    <div class="header">
+        <div class="wrap">
+            <div class="logo">
+                <a th:href="@{/}"><img th:src="@{/images/logo.png}" title="pinbal" /></a>
+            </div>
+            <div class="nav-icon">
+                <a href="javascript:;" class="right_bt" id="activator"><span> </span> </a>
+            </div>
+            <div class="top-searchbar">
+                <form>
+                    <input type="text" /><input type="submit" value="" />
+                </form>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
     <div layout:fragment="content"></div>
 </body>
 </html>

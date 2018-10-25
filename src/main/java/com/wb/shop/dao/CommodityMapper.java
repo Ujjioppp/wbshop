@@ -1,7 +1,11 @@
 package com.wb.shop.dao;
 
 import com.wb.shop.domain.Commodity;
+import org.apache.ibatis.annotations.Mapper;
 
+import java.util.List;
+
+@Mapper
 public interface CommodityMapper {
     
     int deleteByPrimaryKey(Long id);
@@ -23,4 +27,8 @@ public interface CommodityMapper {
 
     
     int updateByPrimaryKey(Commodity record);
+
+    List<Commodity> findCommodityList();
+
+    Commodity getByUuid(String uuid);
 }

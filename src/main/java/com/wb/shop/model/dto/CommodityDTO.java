@@ -1,4 +1,4 @@
-package com.wb.shop.domain;
+package com.wb.shop.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,45 +7,46 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 import java.util.Date;
 
+/**
+ * Created by ye on 25/10/18.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Commodity {
-    
+public class CommodityDTO {
     private Long id;
 
-    
+
     private String uuid;
 
-    
+
     private String name;
 
-    
+
     private String title;
 
-    
+
     private BigDecimal price;
 
-    
+
     private String img;
 
-    
+
     private Long creator;
 
-    
+
     private Date createTime;
 
-    
+
     private Long updater;
 
-    
+
     private Date updateTime;
 
-    
+
     private Integer deleted;
 
-    
+
     private String description;
 
-    
 }
