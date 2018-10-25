@@ -19,13 +19,13 @@
 <div class="content" layout:fragment="content">
     <div class="wrap">
         <div class="contact-info">
-            <form method="post" action="" th:action="@{/commodity/add}">
+            <form method="post" action="" th:action="@{/commodity/add}" enctype="multipart/form-data">
                 <div class="contact-form">
                     <div class="contact-to">
                         <input type="text" name="name" class="text" placeholder="名字" value="" />
                         <input type="text" name="title" class="text" placeholder="标题" />
                         <input type="text" name="price" class="text" onkeyup="Num(this)" placeholder="价钱"/>
-                        <input type="text" name="1" class="text" onkeyup="Num(this)" placeholder="价钱"/>
+                        <input type="file" name="file" class="text"/>
                     </div>
                     <div class="text2">
                         <textarea value="简介" name="description" style="resize: none;" placeholder="简介"></textarea>

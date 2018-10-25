@@ -1,5 +1,6 @@
 package com.wb.shop.web.controller;
 
+import com.wb.shop.bean.FileUploader;
 import com.wb.shop.constant.UrlView;
 import com.wb.shop.manager.vo.CommodityVOManager;
 import com.wb.shop.model.dto.CommodityDTO;
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -25,6 +27,8 @@ public class CommodityController {
     private CommodityService commodityService;
     @Autowired
     private CommodityVOManager commodityVOManager;
+    @Autowired
+    private FileUploader fileUploader;
 
     @GetMapping(value = UrlView.Commodity.PRODUCT_URL)
     public String product(@PathVariable("uuid") String uuid, ModelMap modelMap) {
@@ -50,7 +54,9 @@ public class CommodityController {
     }
 
     @PostMapping(value = UrlView.Commodity.PRODUCT_ADD_URL)
-    public String save(CommodityVO commodityVO) {
+    public String save(CommodityVO commodityVO, @RequestParam("file") MultipartFile file) {
+        String imgPath = fileUploader.upload(file);
+        commodityVO.setImg(imgPath);
         CommodityDTO commodityDTO = commodityVOManager.convertToCommodityDTO(commodityVO);
         commodityService.saveCommodity(commodityDTO);
         return "redirect:/" + UrlView.Index.INDEX_URL;

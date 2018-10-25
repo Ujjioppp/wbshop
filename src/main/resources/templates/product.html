@@ -12,8 +12,10 @@
         <div class="single-page">
             <div class="single-page-artical">
                 <div class="artical-content">
-                    <img th:src="@{'../../'+${commodity.img}}" src="images/single-post-pic.jpg" title="banner1" />
-                    <h3><a href="javascript:;" th:text="${commodity.title}">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</a></h3>
+                    <img th:src="@{'../../product/'+${commodity.img}}" src="images/single-post-pic.jpg" title="banner1" />
+                    <h3><a href="javascript:;" th:text="${commodity.name}">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</a></h3>
+                    <h4 th:text="${commodity.title}">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</h4>
+                    <h4 th:text="${commodity.price}">incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</h4>
                     <p th:text="${commodity.description}">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
                 </div>
                 <div class="clear"> </div>

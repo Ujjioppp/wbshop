@@ -2,7 +2,7 @@
     var page = 2;
     var template =
         "<li onclick='javascript:detail(\"{{uuid}}\")'>" +
-        "<img src='{{img}}' width=\"200\" height=\"200\">" +
+        "<img src='product/{{img}}' width=\"200\" height=\"200\">" +
         "<div class=\"post-info\">" +
         "<div class=\"post-basic-info\">" +
         "<h3><a href=href=\"javascript:;\">{{name}}</a></h3>" +

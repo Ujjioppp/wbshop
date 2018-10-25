@@ -14,7 +14,7 @@
             <div id="main" role="main">
                 <ul id="tiles" >
                     <li th:onclick="'javascript:detail(\''+${c.uuid}+'\')'" onclick="location.href='javascript:;';" th:each="c:${list}">
-                        <img th:src="${c.img}" src="images/img1.jpg" width="200" height="200" />
+                        <img th:src="'product/'+${c.img}" src="images/img1.jpg" width="200" height="200" />
                         <div class="post-info">
                             <div class="post-basic-info">
                                 <h3><a href="javascript:;" th:text="${c.name}">Animation films</a></h3>
